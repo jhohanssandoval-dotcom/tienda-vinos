@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cava Sublime | Vinos & Selecciones Especiales</title>
+    <style>
+        :root {
+            --primary-color: #58111A; /* Color vino tinto profundo */
+            --accent-color: #D4AF37;  /* Dorado */
+            --bg-light: #FAFAFA;
+            --text-dark: #2C2C2C;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1200&auto=format&fit=crop') center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b89528;
+            transform: translateY(-2px);
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto 0;
+        }
+
+        /* Grilla de Productos */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Sobre Nosotros */
+        .about {
+            background-color: #F4EBE1;
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav a {
+                margin: 0 0.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <a href="#" class="logo">CAVA SUBLIME</a>
+        <nav>
+            <a href="#catálogo">Catálogo</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Sección Principal -->
+    <div class="hero">
+        <h1>La Elegancia en Cada Copa</h1>
+        <p>Selección exclusiva de vinos de autor y bodegas de tradición artesanal.</p>
+        <a href="#catálogo" class="btn">Explorar Selección</a>
+    </div>
+
+    <!-- Catálogo de Productos -->
+    <section id="catálogo">
+        <h2 class="section-title">Nuestra Selección</h2>
+        <div class="grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?q=80&w=600&auto=format&fit=crop" alt="Vino Tinto Reserva">
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Gran Reserva Malbec</h3>
+                        <p class="card-desc">Notas de frutos rojos, vainilla y roble francés. Crianza de 18 meses.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price">$45.00</span>
+                        <a href="#" class="btn" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1586370434639-0fe43b2d32e6?q=80&w=600&auto=format&fit=crop" alt="Vino Blanco Chardonnay">
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Chardonnay Edición Especial</h3>
+                        <p class="card-desc">Fresco, cítrico y con sutiles toques de manzana verde y mantequilla.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price">$32.00</span>
+                        <a href="#" class="btn" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=600&auto=format&fit=crop" alt="Vino Rosado Premium">
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Rosé D'Anjou</h3>
+                        <p class="card-desc">Ligero, aromático y refrescante. Ideal para maridajes con mariscos y postres.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price">$28.00</span>
+                        <a href="#" class="btn" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Pedir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="nosotros">
+        <div class="about">
+            <h2 class="section-title">Sobre Cava Sublime</h2>
+            <p>Somos apasionados por la cultura del vino. Recorremos los mejores viñedos para traer a tu mesa ediciones limitadas y botellas de alta gama de la mano de sumilleres expertos.</p>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer id="contacto">
+        <p>&copy; 2026 Cava Sublime - Tienda de Vinos. Todos los derechos reservados.</p>
+        <p>Contacto: info@cavasublime.com | Tel: +591 70000000</p>
+    </footer>
+
+</body>
+</html>
